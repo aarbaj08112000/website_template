@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Theme Variables */
+:root {
+    /* Dark Mode (Default) */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e1b4b;
+    --bg-tertiary: #312e81;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(15, 23, 42, 0.7);
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #334155;
+    --scrollbar-thumb-hover: #475569;
+    --card-hover-shadow: rgba(56, 189, 248, 0.3);
+}
+
+/* Light Mode */
+body.light-mode {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --scrollbar-track: #f8f9fa;
+    --scrollbar-thumb: #adb5bd;
+    --scrollbar-thumb-hover: #6c757d;
+    --card-hover-shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animated Gradient Background */
+.gradient-bg {
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+body.gradient-bg.light-mode {
+    background: linear-gradient(-45deg, #ffffff, #f8f9fa, #e9ecef, #f1f3f5) !important;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Glassmorphism */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+}
+
+.glass-nav {
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* Button Ripple */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+    transform: scale(0, 0);
+    opacity: 0.2;
+    transition: 0s;
+}
+
+/* Service Card Hover */
+.service-card {
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px -10px var(--card-hover-shadow);
+    border-color: var(--card-hover-shadow);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Page Transition */
+.page-transition {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Swiper Functionality Overrides */
+.swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+    background: #06b6d4;
+    /* Cyan accent */
+    opacity: 1;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.5rem !important;
+}
+
+/* Swiper in Light Mode */
+body.light-mode .swiper-pagination-bullet {
+    background: #212529;
+    opacity: 0.3;
+}
+
+body.light-mode .swiper-pagination-bullet-active {
+    background: #06b6d4;
+    opacity: 1;
+}
+
+body.light-mode .swiper-button-next,
+body.light-mode .swiper-button-prev {
+    color: #212529;
+}
+
+body.light-mode .swiper-button-next:after,
+body.light-mode .swiper-button-prev:after {
+    color: #212529;
+}
+
+/* Swiper section and container backgrounds in light mode */
+body.light-mode .swiper,
+body.light-mode .mySwiper,
+body.light-mode .swiper-wrapper,
+body.light-mode .swiper-slide {
+    background: transparent !important;
+}
+
+/* Ensure hero section with swiper has light background */
+body.light-mode section.min-h-screen {
+    background: transparent !important;
+}
+
+/* Header sections in light mode */
+body.light-mode header {
+    background: transparent !important;
+}
+
+body.light-mode header .bg-cyan-500\/5,
+body.light-mode header .bg-blue-500\/5 {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Modal Animations */
+.modal-show {
+    opacity: 1 !important;
+}
+
+.modal-content-show {
+    transform: scale(1) !important;
+}
+
+/* Gallery Flip Card */
+.gallery-card-container {
+    perspective: 1000px;
+}
+
+.gallery-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.gallery-card-container:hover .gallery-card-inner {
+    transform: rotateY(180deg);
+}
+
+.gallery-card-front,
+.gallery-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.gallery-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Active Tab */
+.active-tab {
+    background: rgba(255, 255, 255, 0.1);
+    color: #22d3ee;
+    /* Cyan-400 */
+    border-color: rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .theme-toggle-slider {
+    transform: translateX(30px);
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.theme-toggle-icon {
+    width: 14px;
+    height: 14px;
+    color: white;
+}
+
+/* Comprehensive Light Mode Overrides */
+body.light-mode {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+/* Override ALL dark backgrounds in light mode */
+body.light-mode .bg-black\/20,
+body.light-mode .bg-black\/30,
+body.light-mode .bg-black\/40,
+body.light-mode .bg-black\/50,
+body.light-mode .bg-black\/80,
+body.light-mode .bg-black\/90,
+body.light-mode .bg-black {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Override gray backgrounds */
+body.light-mode .bg-gray-600,
+body.light-mode .bg-gray-700,
+body.light-mode .bg-gray-800,
+body.light-mode .bg-gray-900,
+body.light-mode .bg-gray-900\/90 {
+    background-color: rgba(233, 236, 239, 0.8) !important;
+}
+
+/* Override specific background opacity classes */
+body.light-mode [class*="bg-black/"] {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Text colors in light mode */
+body.light-mode .text-white {
+    color: #212529 !important;
+}
+
+body.light-mode .text-gray-300,
+body.light-mode .text-gray-400,
+body.light-mode .text-gray-500,
+body.light-mode .text-gray-600 {
+    color: #495057 !important;
+}
+
+/* Ensure headings are visible */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6 {
+    color: #212529 !important;
+}
+
+/* Footer in light mode */
+body.light-mode footer {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-image: url(light_footer_img.svg);
+    background-size: cover;
+    background-position: center;
+    border-top-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer in dark mode */
+footer {
+    background-image: url(dark_footer_img.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Cards and sections */
+body.light-mode section {
+    color: #212529;
+}
+
+/* Section backgrounds in light mode */
+body.light-mode section[class*="bg-black"] {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Floating orbs in light mode */
+body.light-mode .bg-purple-600,
+body.light-mode .bg-purple-500,
+body.light-mode .bg-blue-600,
+body.light-mode .bg-blue-500,
+body.light-mode .bg-cyan-600,
+body.light-mode .bg-cyan-500 {
+    opacity: 0.15 !important;
+}
+
+/* Navigation in light mode */
+body.light-mode nav {
+    color: #212529;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+body.light-mode nav.glass-nav {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode nav a {
+    color: #495057;
+}
+
+body.light-mode nav a:hover {
+    color: #212529;
+}
+
+/* Mobile menu in light mode */
+body.light-mode #mobile-menu {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Glass effect in light mode - make it lighter */
+body.light-mode .glass {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Modals in light mode */
+body.light-mode .bg-black\/95 {
+    background-color: rgba(248, 249, 250, 0.98) !important;
+}
+
+/* Input fields in light mode */
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+    color: #6c757d !important;
+}
+
+/* Card backgrounds in light mode */
+body.light-mode .bg-white\/5,
+body.light-mode .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Gradient backgrounds in light mode */
+body.light-mode .bg-gradient-to-r {
+    opacity: 0.9;
+}
+
+/* Border colors in light mode */
+body.light-mode .border-white\/10,
+body.light-mode .border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .border-gray-800 {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}

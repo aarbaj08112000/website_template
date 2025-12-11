@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecorWeb & ID Cards | Premium Solutions</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=9.0">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="gradient-bg min-h-screen text-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html"
+                class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                DecorID
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-white transition decoration-transparent">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a>
+                <a href="services.html" class="text-gray-300 hover:text-white transition">Services</a>
+                <a href="gallery.html" class="text-gray-300 hover:text-white transition">Gallery</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white transition">Contact</a>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <div class="theme-toggle-slider">
+                        <svg class="theme-toggle-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path id="theme-icon-path"
+                                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <a href="contact.html"
+                    class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-medium hover:scale-105 transition transform shadow-lg ripple">Get
+                    Quote</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden glass absolute w-full top-full left-0 border-t border-gray-800">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+                <a href="services.html" class="text-gray-300 hover:text-white">Services</a>
+                <a href="gallery.html" class="text-gray-300 hover:text-white">Gallery</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Slider -->
+    <section class="min-h-screen relative overflow-hidden pt-24 pb-12 flex items-center">
+        <!-- Abstract Background Orbs -->
+        <div
+            class="absolute top-20 left-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none z-0">
+        </div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 bg-cyan-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none z-0"
+            style="animation-delay: 2s"></div>
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper w-full relative z-10" style="height: auto; min-height: 600px;">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1: Website Decoration -->
+                <div class="swiper-slide flex items-center justify-center">
+                    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                        <div class="text-center md:text-left">
+                            <div
+                                class="inline-block px-4 py-1 mb-4 rounded-full glass text-sm text-cyan-300 font-medium hero-text">
+                                Premium Digital Assets
+                            </div>
+                            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 hero-text">
+                                Smart Website <br />
+                                <span
+                                    class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Decoration</span>
+                            </h1>
+                            <p class="text-lg text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 hero-text">
+                                Elevate your digital presence with premium banners, animations, and ready-to-use themes.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-8">
+                                <a href="services.html"
+                                    class="hero-btn px-8 py-4 bg-white text-blue-900 rounded-full font-bold hover:bg-gray-100 transition shadow-[0_0_20px_rgba(255,255,255,0.3)] text-center ripple relative z-20">
+                                    Explore Decor
+                                </a>
+                                <button onclick="openVideoModal()"
+                                    class="hero-btn px-8 py-4 glass text-white rounded-full font-bold hover:bg-white/10 transition flex items-center justify-center gap-2 group ripple relative z-20">
+                                    <svg class="w-6 h-6 text-cyan-400 fill-current" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                    Watch Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero-image relative hidden md:block">
+                            <!-- Card 1 -->
+                            <div
+                                class="absolute top-10 right-20 w-72 h-48 glass rounded-xl border border-white/20 p-4 transform rotate-6 animate-float">
+                                <div class="h-full flex flex-col justify-between">
+                                    <div class="flex justify-between items-start">
+                                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                                        </div>
+                                        <div class="w-20 h-4 bg-white/10 rounded"></div>
+                                    </div>
+                                    <div class="w-full h-24 bg-white/5 rounded mt-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: ID Card Solutions -->
+                <div class="swiper-slide flex items-center justify-center">
+                    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                        <div class="text-center md:text-left">
+                            <div
+                                class="inline-block px-4 py-1 mb-4 rounded-full glass text-sm text-purple-300 font-medium hero-text">
+                                Secure & Professional
+                            </div>
+                            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 hero-text">
+                                Professional <br />
+                                <span
+                                    class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">ID
+                                    Card Solutions</span>
+                            </h1>
+                            <p class="text-lg text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 hero-text">
+                                High-quality printing for Schools, Offices, and Events. PVC, RFID, and Smart Cards.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-8">
+                                <a href="contact.html"
+                                    class="hero-btn px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-bold hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition text-center ripple relative z-20">
+                                    Order ID Cards
+                                </a>
+                                <button onclick="openVideoModal()"
+                                    class="hero-btn px-8 py-4 glass text-white rounded-full font-bold hover:bg-white/10 transition flex items-center justify-center gap-2 group ripple relative z-20">
+                                    <svg class="w-6 h-6 text-pink-400 fill-current" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                    Watch Process
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero-image relative hidden md:block">
+                            <!-- ID Card Visual -->
+                            <div
+                                class="relative w-80 h-52 glass rounded-2xl border border-white/10 p-6 transform -rotate-3 animate-float shadow-2xl">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div class="w-16 h-16 bg-gray-700 rounded-full"></div>
+                                    <div class="text-right">
+                                        <div class="w-24 h-4 bg-white/20 rounded mb-2 ml-auto"></div>
+                                        <div class="w-16 h-3 bg-white/10 rounded ml-auto"></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="w-full h-8 bg-gradient-to-r from-purple-500/50 to-pink-500/50 rounded flex items-center px-4 tracking-widest font-mono text-xs text-white/70">
+                                    1234 5678 9000
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Swiper Navigation/Pagination -->
+            <div class="swiper-button-next text-white/50 hover:text-white transition after:text-2xl"></div>
+            <div class="swiper-button-prev text-white/50 hover:text-white transition after:text-2xl"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Quick Categories (New) -->
+    <section class="py-16 relative z-10 -mt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Category 1 -->
+                <div
+                    class="glass p-6 rounded-2xl text-center hover:bg-white/10 transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">School & College IDs</h3>
+                    <p class="text-sm text-gray-400">Durable cards for students & staff</p>
+                </div>
+                <!-- Category 2 -->
+                <div
+                    class="glass p-6 rounded-2xl text-center hover:bg-white/10 transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Corporate IDs</h3>
+                    <p class="text-sm text-gray-400">Professional branding for employees</p>
+                </div>
+                <!-- Category 3 -->
+                <div
+                    class="glass p-6 rounded-2xl text-center hover:bg-white/10 transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-400 to-teal-400 rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Smart Cards & RFID</h3>
+                    <p class="text-sm text-gray-400">Secure access & attendance</p>
+                </div>
+                <!-- Category 4 -->
+                <div
+                    class="glass p-6 rounded-2xl text-center hover:bg-white/10 transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Lanyards & Accessories</h3>
+                    <p class="text-sm text-gray-400">Badge holders & custom straps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section (New) -->
+    <section class="pt-20 bg-black/20 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div
+                        class="absolute -top-10 -left-10 w-40 h-40 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+                    </div>
+                    <!-- Abstract UI Representation -->
+                    <div class="glass p-8 rounded-2xl relative z-10 transform -rotate-2">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-12 h-12 bg-gray-700 rounded-full animate-pulse"></div>
+                            <div class="space-y-2">
+                                <div class="w-32 h-3 bg-gray-600 rounded"></div>
+                                <div class="w-20 h-3 bg-gray-600 rounded"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-2 bg-gray-700 rounded w-full"></div>
+                            <div class="h-2 bg-gray-700 rounded w-5/6"></div>
+                            <div class="h-2 bg-gray-700 rounded w-4/6"></div>
+                        </div>
+                        <div class="mt-6 flex justify-between items-center">
+                            <div class="w-24 h-8 bg-blue-600/50 rounded"></div>
+                            <div class="w-8 h-8 bg-green-500/50 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About <span class="text-cyan-400">DecorID</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        At DecorID Solution, we blend artistry with utility to provide comprehensive identification
+                        solutions for schools, colleges, and corporate organizations. We believe that an ID is more than
+                        just a card; it's a statement of belonging and professional identity.
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        Our premium digital decoration services ensure your online presence matches the physical quality
+                        of your brand. From custom website themes to secure RFID cards, we cover all your identity
+                        needs.
+                    </p>
+                    <a href="services.html"
+                        class="inline-flex items-center text-cyan-400 font-semibold hover:text-cyan-300 transition">
+                        Discover More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Video Modal -->
+        <div id="videoModal"
+            class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+            <div class="relative w-full max-w-4xl mx-4 aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300"
+                id="videoModalContent">
+                <button onclick="closeVideoModal()"
+                    class="absolute top-4 right-4 text-white hover:text-red-500 z-10 transition">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+                <iframe class="w-full h-full" src="" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen id="videoFrame"></iframe>
+            </div>
+        </div>
+
+        <!-- Comprehensive Solutions (Replaces Old Services) -->
+        <section class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-cyan-400 font-semibold tracking-wider text-sm">WHAT WE OFFER</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4">Comprehensive Solutions</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Custom ID cards, accessories, lanyards, badges, name
+                        plates, medals, and raw materials — crafted with quality and precision.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Item 1: ID Cards -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">ID Cards</h3>
+                        <p class="text-xs text-gray-400 mt-2">PVC, RFID, Smart Cards</p>
+                    </div>
+                    <!-- Item 2: Lanyards -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Lanyards</h3>
+                        <p class="text-xs text-gray-400 mt-2">Custom Printed Straps</p>
+                    </div>
+                    <!-- Item 3: Face ID / Bio -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-cyan-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Biometrics</h3>
+                        <p class="text-xs text-gray-400 mt-2">Face ID & Attendance</p>
+                    </div>
+                    <!-- Item 4: Accessories -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Accessories</h3>
+                        <p class="text-xs text-gray-400 mt-2">Holders & Yoyos</p>
+                    </div>
+                    <!-- Item 5: Badges -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Badges</h3>
+                        <p class="text-xs text-gray-400 mt-2">VIP & Event Badges</p>
+                    </div>
+                    <!-- Item 6: Medals -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-teal-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Medals</h3>
+                        <p class="text-xs text-gray-400 mt-2">Sports & Academic</p>
+                    </div>
+                    <!-- Item 7: Trophies -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-indigo-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Trophies</h3>
+                        <p class="text-xs text-gray-400 mt-2">Awards & Recognition</p>
+                    </div>
+                    <!-- Item 8: Keychain -->
+                    <div class="glass p-6 rounded-xl hover:bg-white/5 transition group text-center">
+                        <div
+                            class="w-14 h-14 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-red-400 group-hover:scale-110 transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white">Keychains</h3>
+                        <p class="text-xs text-gray-400 mt-2">Custom Branding</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commitment to Quality Banner (New) -->
+        <section class="py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-blue-900/80 z-0"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Commitment to Quality</h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    "We provide top-notch sublimation ID cards, accessories, lanyards, and raw materials. Our dedicated
+                    ID items team ensures high-quality products, helping you identify your brand or students with
+                    pride."
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <div class="glass px-6 py-3 rounded-full flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-sm font-semibold">Premium Materials</span>
+                    </div>
+                    <div class="glass px-6 py-3 rounded-full flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-sm font-semibold">Fast Delivery</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us (New) -->
+        <section class="py-24 bg-black/20">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8">Why Choose <br /><span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">DecorID
+                            Solution?</span></h2>
+
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 flex-shrink-0 mt-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Premium Quality Printing</h3>
+                                <p class="text-gray-400">High-resolution print ensuring sharp details and vibrant colors
+                                    for every card.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 flex-shrink-0 mt-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Bulk Order Support</h3>
+                                <p class="text-gray-400">Streamlined processing for large orders from schools and
+                                    corporate entities.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 flex-shrink-0 mt-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Smart Attendance & Security</h3>
+                                <p class="text-gray-400">Integration with RFID and NFC technology for modern campus
+                                    security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="glass p-8 rounded-2xl border border-white/10 relative z-10">
+                        <!-- abstract dashboard visual -->
+                        <div class="flex justify-between items-center mb-8">
+                            <div class="w-32 h-6 bg-gray-700/50 rounded"></div>
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-blue-500/10 p-4 rounded-xl">
+                                <div class="text-blue-400 text-2xl font-bold mb-1">2.5k+</div>
+                                <div class="text-gray-500 text-xs">Happy Clients</div>
+                            </div>
+                            <div class="bg-purple-500/10 p-4 rounded-xl">
+                                <div class="text-purple-400 text-2xl font-bold mb-1">100k+</div>
+                                <div class="text-gray-500 text-xs">Cards Printed</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-10 bg-white/5 rounded w-full flex items-center px-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-600 mr-3"></div>
+                                <div class="w-20 h-2 bg-gray-600 rounded"></div>
+                            </div>
+                            <div class="h-10 bg-white/5 rounded w-full flex items-center px-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-600 mr-3"></div>
+                                <div class="w-20 h-2 bg-gray-600 rounded"></div>
+                            </div>
+                            <div class="h-10 bg-white/5 rounded w-full flex items-center px-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-600 mr-3"></div>
+                                <div class="w-20 h-2 bg-gray-600 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative background elements -->
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -z-10">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (New) -->
+        <section class="py-20">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="glass rounded-xl overflow-hidden FAQ-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                            onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">What type of cards do you support?</span>
+                            <svg class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed FAQ-content">
+                            We support a wide range of cards including standard PVC, RFID, NFC, Smart Cards (Mifare
+                            1K/4K), and Proximity cards suitable for schools, offices, and events.
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="glass rounded-xl overflow-hidden FAQ-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                            onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">Do you provide ID card design services?</span>
+                            <svg class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed FAQ-content">
+                            Yes! Our team of professional designers can create custom templates tailored to your brand
+                            guidelines. We also offer pre-made templates for quicker turnaround.
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="glass rounded-xl overflow-hidden FAQ-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                            onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">What is the minimum order quantity?</span>
+                            <svg class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed FAQ-content">
+                            We accept orders of all sizes! Whether you need 5 cards for a small team or 5,000 for a
+                            university, we can handle it with competitive pricing for bulk orders.
+                        </div>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="glass rounded-xl overflow-hidden FAQ-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                            onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">Do you ship internationally?</span>
+                            <svg class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed FAQ-content">
+                            Currently, we primarily serve domestic clients to ensure fast delivery. Please contact us
+                            for special international shipping requests.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials & Feedback (New) -->
+        <section class="py-20 bg-black/20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Client Testimonials</h2>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Review Form -->
+                    <div class="glass p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-6">Leave a Review</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Your Name</label>
+                                <input type="text"
+                                    class="w-full bg-white/5 border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-cyan-400 transition"
+                                    placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Your Feedback</label>
+                                <textarea rows="3"
+                                    class="w-full bg-white/5 border border-white/10 rounded px-4 py-2 text-white focus:outline-none focus:border-cyan-400 transition"
+                                    placeholder="Share your experience..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Rating</label>
+                                <div class="flex gap-2 text-yellow-400">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                            <button type="button"
+                                class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded font-semibold hover:shadow-lg transition">Submit
+                                Review</button>
+                        </form>
+                    </div>
+
+                    <!-- Recent Reviews -->
+                    <div class="space-y-6">
+                        <!-- Review 1 -->
+                        <div class="glass p-6 rounded-xl border-l-4 border-cyan-400">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Great Quality!</h4>
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-3">"The ID cards we ordered for our staff are top
+                                quality. The print is sharp and durability is impressive. Highly recommended!"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gray-600"></div>
+                                <span class="text-xs text-gray-500">- Sarah J., HR Manager</span>
+                            </div>
+                        </div>
+                        <!-- Review 2 -->
+                        <div class="glass p-6 rounded-xl border-l-4 border-purple-400">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Excellent Service</h4>
+                                <span class="text-yellow-400">★★★★☆</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-3">"Fast delivery and very responsive support team. The
+                                custom lanyards came out exactly as we designed them."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gray-600"></div>
+                                <span class="text-xs text-gray-500">- Mike T., Event Coordinator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logo Slider -->
+        <section class="py-12 border-t border-white/10 overflow-hidden">
+            <div class="container mx-auto px-6 mb-8 text-center">
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-widest">Trusted By</p>
+            </div>
+            <div class="relative w-full max-w-5xl mx-auto overflow-hidden">
+                <div
+                    class="flex logo-track gap-16 items-center whitespace-nowrap opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                    <!-- Placeholders for logos -->
+                    <div class="text-2xl font-bold font-serif">AstraCorp</div>
+                    <div class="text-2xl font-bold font-mono">NEXUS</div>
+                    <div class="text-2xl font-bold italic">Vortex</div>
+                    <div class="text-2xl font-bold">Lumina</div>
+                    <div class="text-2xl font-bold font-serif">AstraCorp</div>
+                    <div class="text-2xl font-bold font-mono">NEXUS</div>
+                    <div class="text-2xl font-bold italic">Vortex</div>
+                    <div class="text-2xl font-bold">Lumina</div>
+                    <div class="text-2xl font-bold font-serif">AstraCorp</div>
+                    <div class="text-2xl font-bold font-mono">NEXUS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-black/30 pt-16 pb-8 border-t border-white/10">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-4 gap-12 mb-12">
+                    <div class="md:col-span-2">
+                        <a href="index.html" class="text-2xl font-bold text-white mb-4 block">DecorID</a>
+                        <p class="text-gray-400 max-w-sm">
+                            Combining digital artistry with physical security. Your one-stop shop for premium website
+                            enhancement and professional identification systems.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-4">Services</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="services.html" class="hover:text-cyan-400 transition">Website Decoration</a>
+                            </li>
+                            <li><a href="services.html" class="hover:text-cyan-400 transition">ID Card Design</a></li>
+                            <li><a href="services.html" class="hover:text-cyan-400 transition">School ID Printing</a>
+                            </li>
+                            <li><a href="services.html" class="hover:text-cyan-400 transition">RFID Cards</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-4">Company</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="about.html" class="hover:text-cyan-400 transition">About Us</a></li>
+                            <li><a href="gallery.html" class="hover:text-cyan-400 transition">Gallery</a></li>
+                            <li><a href="contact.html" class="hover:text-cyan-400 transition">Contact</a></li>
+                            <li><a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                    <p>&copy; 2025 DecorID. All rights reserved.</p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-white transition">Twitter</a>
+                        <a href="#" class="hover:text-white transition">LinkedIn</a>
+                        <a href="#" class="hover:text-white transition">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Mobile Menu Script -->
+        <script>
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>
