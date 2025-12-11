@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | DecorWeb & ID Cards</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css?v=9.0">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="gradient-bg min-h-screen text-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4 text-white">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html"
+                class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                DecorID
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-white transition">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a>
+                <a href="services.html" class="text-gray-300 hover:text-white transition">Services</a>
+                <a href="gallery.html" class="text-white font-bold transition">Gallery</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white transition">Contact</a>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <div class="theme-toggle-slider">
+                        <svg class="theme-toggle-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path id="theme-icon-path"
+                                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <a href="contact.html"
+                    class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-medium hover:scale-105 transition transform shadow-lg ripple">Get
+                    Quote</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass absolute w-full top-full left-0 border-t border-gray-800">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-white">About Us</a>
+                <a href="services.html" class="text-gray-300 hover:text-white">Services</a>
+                <a href="gallery.html" class="text-white font-bold">Gallery</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 text-center px-6 relative overflow-hidden">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-cyan-500/5 blur-[100px] pointer-events-none">
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 page-transition">Gallery</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto page-transition" style="animation-delay: 0.1s">
+            Explore our diverse range of personalized products and projects.
+        </p>
+    </header>
+
+    <!-- Tabs -->
+    <section class="pb-8">
+        <div class="container mx-auto px-6 flex justify-center space-x-4">
+            <button onclick="openTab(event, 'Images')"
+                class="tab-btn active-tab px-6 py-2 rounded-full font-semibold transition border border-white/10 glass bg-white/10 text-cyan-400">Image
+                Gallery</button>
+            <button onclick="openTab(event, 'Videos')"
+                class="tab-btn px-6 py-2 rounded-full font-semibold transition border border-white/10 glass text-gray-400 hover:text-white hover:bg-white/5">Video
+                Gallery</button>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="py-8 min-h-[50vh]">
+        <div class="container mx-auto px-6">
+
+            <!-- IMAGES TAB -->
+            <div id="Images" class="gallery-tab-content block">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="image"
+                            data-src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/c2d2f1a3e82069147bbe764e46540bff.jpg"
+                            data-title="Wood Name Stand">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900">
+                                <img src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/c2d2f1a3e82069147bbe764e46540bff.jpg"
+                                    alt="Wood Name Stand" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-end justify-center pb-6">
+                                    <h3 class="text-xl font-bold text-white drop-shadow-md">Premium Wood Stand</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Images')">
+                                <h3 class="text-2xl font-bold mb-2">Wood Name Stand</h3>
+                                <p class="text-gray-300 mb-6 text-sm">Elegant wooden desk nameplate with custom
+                                    engraving and pen holder. Perfect for corporate gifts.</p>
+                                <span class="px-6 py-2 bg-cyan-600/80 rounded-full text-sm">Click for Full View</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="image"
+                            data-src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/6c313368070dbc10cc78b99277404ec6.jpg"
+                            data-title="Crystal Trophy">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900">
+                                <img src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/6c313368070dbc10cc78b99277404ec6.jpg"
+                                    alt="Crystal Trophy" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-end justify-center pb-6">
+                                    <h3 class="text-xl font-bold text-white drop-shadow-md">Crystal Trophy</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Images')">
+                                <h3 class="text-2xl font-bold mb-2">Award Trophy</h3>
+                                <p class="text-gray-300 mb-6 text-sm">Clear crystal award trophy with custom laser
+                                    etching. Ideal for recognition events.</p>
+                                <span class="px-6 py-2 bg-cyan-600/80 rounded-full text-sm">Click for Full View</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="image"
+                            data-src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/d8a93de35b68d8747838133ecc4c18bb.png"
+                            data-title="Gold Medals">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900">
+                                <img src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/d8a93de35b68d8747838133ecc4c18bb.png"
+                                    alt="Gold Medals" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-end justify-center pb-6">
+                                    <h3 class="text-xl font-bold text-white drop-shadow-md">Gold Medals</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Images')">
+                                <h3 class="text-2xl font-bold mb-2">Championship Medals</h3>
+                                <p class="text-gray-300 mb-6 text-sm">High-quality metal medals with custom ribbon
+                                    printing. Available in Gold, Silver, Bronze.</p>
+                                <span class="px-6 py-2 bg-cyan-600/80 rounded-full text-sm">Click for Full View</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="image"
+                            data-src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/fc80f7b8ba7521369c82d5d571c6a62f.jpg"
+                            data-title="School ID Cards">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900">
+                                <img src="https://bharatweb.codecrafterinfotech.online/public/uploads/gallary/fc80f7b8ba7521369c82d5d571c6a62f.jpg"
+                                    alt="School ID Cards" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-end justify-center pb-6">
+                                    <h3 class="text-xl font-bold text-white drop-shadow-md">School ID Cards</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Images')">
+                                <h3 class="text-2xl font-bold mb-2">PVC School IDs</h3>
+                                <p class="text-gray-300 mb-6 text-sm">Durable PVC cards with student details and school
+                                    branding. Barcode integration supported.</p>
+                                <span class="px-6 py-2 bg-cyan-600/80 rounded-full text-sm">Click for Full View</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEOS TAB -->
+            <div id="Videos" class="gallery-tab-content hidden">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Video Item 1 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                            data-title="Production Process">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900 group">
+                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                                    alt="Production Process"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div
+                                        class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                        <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                    <h3 class="text-lg font-bold">Production Process</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Videos')">
+                                <h3 class="text-2xl font-bold mb-2">Behind the Scenes</h3>
+                                <p class="text-gray-300 mb-6 text-sm">Watch how we turn raw materials into customized
+                                    solutions from lanyards to medals.</p>
+                                <span class="px-6 py-2 bg-red-600/80 rounded-full text-sm">Click to Watch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Item 2 -->
+                    <div class="gallery-card-container h-80 cursor-pointer">
+                        <div class="gallery-card-inner relative w-full h-full transition-transform duration-700"
+                            data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                            data-title="Lanyard Printing">
+                            <!-- Front -->
+                            <div
+                                class="gallery-card-front absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-gray-900 group">
+                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                                    alt="Lanyard Printing"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div
+                                        class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                        <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                    <h3 class="text-lg font-bold">Lanyard Printing</h3>
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="gallery-card-back absolute w-full h-full glass rounded-2xl overflow-hidden shadow-lg border border-white/10 flex flex-col items-center justify-center bg-gray-900/90 p-6 text-center"
+                                onclick="openLightbox(this.closest('.gallery-card-container'), 'Videos')">
+                                <h3 class="text-2xl font-bold mb-2">Sublimation Printing</h3>
+                                <p class="text-gray-300 mb-6 text-sm">See our high-speed sublimation printing process
+                                    for custom lanyards.</p>
+                                <span class="px-6 py-2 bg-red-600/80 rounded-full text-sm">Click to Watch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Overlay -->
+    <div id="galleryLightbox"
+        class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-xl opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()"
+            class="absolute top-4 right-4 text-white hover:text-red-500 transition z-[110]">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="w-full max-w-6xl h-[80vh] flex items-center justify-center p-4">
+            <!-- Swiper Container -->
+            <div class="swiper lightboxSwiper w-full h-full">
+                <div class="swiper-wrapper" id="lightboxSwiperWrapper">
+                    <!-- Slides injected via JS -->
+                </div>
+                <div class="swiper-button-next text-white"></div>
+                <div class="swiper-button-prev text-white"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-black/30 pt-16 pb-8 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="index.html" class="text-2xl font-bold text-white mb-4 block">DecorID</a>
+                    <p class="text-gray-400 max-w-sm">
+                        Combining digital artistry with physical security. Your one-stop shop for premium website
+                        enhancement and professional identification systems.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-cyan-400 transition">Website Decoration</a></li>
+                        <li><a href="services.html" class="hover:text-cyan-400 transition">ID Card Design</a></li>
+                        <li><a href="services.html" class="hover:text-cyan-400 transition">School ID Printing</a></li>
+                        <li><a href="services.html" class="hover:text-cyan-400 transition">RFID Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-cyan-400 transition">About Us</a></li>
+                        <li><a href="gallery.html" class="text-cyan-400 font-bold transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-cyan-400 transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2025 DecorID. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Twitter</a>
+                    <a href="#" class="hover:text-white transition">LinkedIn</a>
+                    <a href="#" class="hover:text-white transition">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
